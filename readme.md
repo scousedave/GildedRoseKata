@@ -14,16 +14,20 @@ There are 3 projects. The inventory management system is .net standard 2.0 to gi
 To execute, load the solution  "GildedRoseKata.sln" into Visual Studio and press F5 to run the Kata app and use the Visual Studio Test Explorer to run the unit tests
 
 or from the command line:
+```
+cd InvConsole
 
->cd InvConsole
->dotnet build
->dotnet run
+dotnet build
 
+dotnet run
+```
 to then run the unit tests
 
->cd ..\InventoryUnitTests
->dotnet test
+```
+cd ..\InventoryUnitTests
 
+dotnet test
+```
 ## Extending the inventory
 
 Stock items can be added by creating classes that inherit from `StockItemBase` anywhere in the solution, so:
