@@ -30,7 +30,7 @@ dotnet test
 ```
 ## Extending the inventory
 
-Stock items can be added by creating classes that inherit from `StockItemBase` anywhere in the solution, so:
+Stock items can be added by creating classes anywhere in the solution that inherit from `StockItemBase`, so:
 
 ```
 public class AgedBrandy : StockItemBase
