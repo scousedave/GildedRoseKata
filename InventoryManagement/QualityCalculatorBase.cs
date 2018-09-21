@@ -6,7 +6,7 @@ namespace GildedRose.InventoryManagement
 	{
 		public abstract bool CanDegrade { get; }
 
-		internal abstract uint CalculateQuality(int sellInValue, uint quality);
+		public abstract uint CalculateQuality(int sellInValue, uint quality);
 
 		public uint CalculatNewQuality(int sellInValue, uint quality)
 		{

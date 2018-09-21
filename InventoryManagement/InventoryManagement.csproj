@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="StockItems\**" />
+    <EmbeddedResource Remove="StockItems\**" />
+    <None Remove="StockItems\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="StockItemFactory.cs" />
     <Compile Remove="UnknownStockItemException.cs" />
   </ItemGroup>
 

@@ -3,9 +3,9 @@
 namespace GildedRose.InventoryManagement
 {
 
-	public abstract class StockItemBase : IStockItem
+	public class StockItem : IStockItem
 	{
-		public abstract string Name { get;  }
+		public string Name { get;  }
 		public string NormalizedName => Name.Normalize();
 		public int SellInValue { get; set; }
 
@@ -13,20 +13,23 @@ namespace GildedRose.InventoryManagement
 
 		public uint Quality { get; set; }
 
-		public virtual bool CanDegradeByDate => true;
-
+		public bool CanDegradeByDate { get; }
+	
 		public IQualityCalculator QualityCalculator { get; }
 
 
-		protected StockItemBase(int sellInValue, uint quality, IQualityCalculator qualityCalculator)
+		public StockItem(string name, int sellInValue, uint quality, IQualityCalculator qualityCalculator, bool canDegradeByDate)
 		{
+			Name  = name.Equals("INVALID ITEM") ? "NO SUCH ITEM" : name;
 			SellInValue = sellInValue;
 			Quality = quality;
 			QualityCalculator = qualityCalculator;
+			CanDegradeByDate = canDegradeByDate;
 		}
 
 		public override string ToString()
 		{
+			if (Name.Equals("NO SUCH ITEM")) return Name;
 			return $"{Name} {SellInValue} {ConstrainedQuality}";
 		}
 	}

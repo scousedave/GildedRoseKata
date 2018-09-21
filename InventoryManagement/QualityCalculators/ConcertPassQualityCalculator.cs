@@ -1,10 +1,10 @@
 ﻿namespace GildedRose.InventoryManagement.QualityCalculators
 {
-	internal class ConcertPassQualityCalculator : QualityCalculatorBase
+	public class ConcertPassQualityCalculator : QualityCalculatorBase
 	{
 		public override bool CanDegrade => false;
 
-		internal override uint CalculateQuality(int sellInValue, uint quality)
+		public override uint CalculateQuality(int sellInValue, uint quality)
 		{
 			if (sellInValue < 0) return 0;
 			if (sellInValue <= 5) return quality + 3;

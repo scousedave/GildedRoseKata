@@ -1,10 +1,10 @@
 ﻿namespace GildedRose.InventoryManagement.QualityCalculators
 {
-	internal class LegendaryQualityCalculator : QualityCalculatorBase
+	public class LegendaryQualityCalculator : QualityCalculatorBase
 	{
 		public override bool CanDegrade => false;
 
-		internal override uint CalculateQuality(int sellInValue, uint quality)
+		public override uint CalculateQuality(int sellInValue, uint quality)
 		{
 			return quality;
 		}
