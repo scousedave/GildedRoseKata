@@ -1,0 +1,2 @@
+cd InvConsole
+go.bat

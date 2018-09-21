@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>GildedRose.InventoryManagement</RootNamespace>
+    <Authors>David Lawson</Authors>
+    <Product>Gilded Rose Inventory Management</Product>
+    <PackageId>GildedRoseKataInventoryManagement</PackageId>
+    <Copyright>MIT</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="UnknownStockItemException.cs" />
+  </ItemGroup>
+
+</Project>
