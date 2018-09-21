@@ -1,6 +1,7 @@
 ﻿using System;
 using GildedRose.InventoryManagement;
 using GildedRose.InventoryManagement.Interfaces;
+using GildedRose.InventoryManagement.QualityCalculators;
 
 namespace InvConsole
 {
@@ -19,15 +20,15 @@ namespace InvConsole
 				Console.WriteLine("Adding Stock Items");
 				Console.WriteLine("");
 
-				addToInventory("Aged Brie", 1, 1);
-				addToInventory("Backstage passes", -1, 2);
-				addToInventory("Backstage passes", 9, 2);
-				addToInventory("Sulfuras", 2, 2);
-				addToInventory("Normal Item", -1, 55);
-				addToInventory("Normal Item", 2, 2);
-				addToInventory("INVALID ITEM", 2, 2);
-				addToInventory("Conjured", 2, 2);
-				addToInventory("Conjured", -1, 5);
+				addToInventory("Aged Brie", 1, 1, new IncreasingQualityCalculator());
+				addToInventory("Backstage passes", -1, 2, new ConcertPassQualityCalculator());
+				addToInventory("Backstage passes", 9, 2, new ConcertPassQualityCalculator());
+				addToInventory("Sulfuras", 2, 2, new LegendaryQualityCalculator(), false);
+				addToInventory("Normal Item", -1, 55, new NormalQualityCalculator());
+				addToInventory("Normal Item", 2, 2, new NormalQualityCalculator());
+				addToInventory("INVALID ITEM", 2, 2, new NoActionQualityCalculator());
+				addToInventory("Conjured", 2, 2, new DoubleDegradeQualityCalculator());
+				addToInventory("Conjured", -1, 5, new DoubleDegradeQualityCalculator());
 
 				displayStock();
 
@@ -52,10 +53,10 @@ namespace InvConsole
 
 		}
 
-		private static void addToInventory(string name, int sellInValue, uint quality)
+		private static void addToInventory(string name, int sellInValue, uint quality, IQualityCalculator qualityCalculator, bool canDegradeByDate = true)
 		{
 			Console.WriteLine($"Adding {name} {sellInValue} {quality}");
-			_inventory.AddStock(name, sellInValue, quality);
+			_inventory.AddStock(name, sellInValue, quality, qualityCalculator, canDegradeByDate);
 		}
 
 		private static void displayStock()
